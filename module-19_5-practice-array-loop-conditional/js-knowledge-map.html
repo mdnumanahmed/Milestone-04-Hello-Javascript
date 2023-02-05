@@ -1,0 +1,3944 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary: #e65100;
+        --secondary: #fbc02d;
+        --text-color: #25272a;
+        --p-color: #45494f;
+        --dark-bg: #212121;
+        --gray-bg: #f5f5f5;
+        --navbar-height: 50px;
+        --action-bar-height: var(--navbar-height);
+        --total-bars-height: calc(
+          var(--navbar-height) + var(--action-bar-height)
+        );
+        --console-height: 25vh;
+        --tests-height: 40vh;
+        --info-height: 35vh;
+        --font-family: Inter, system-ui, sans-serif;
+        --dark-1: #212121;
+        --dark-2: #303030;
+        --dark-25: #383838;
+        --dark-3: #424242;
+        --dark-when-light: #222;
+        --light-when-dark: white;
+        --font-code: "Fira Code", monospace;
+        --dropdown-layer: 85;
+        --notes-layer: 85;
+        --overlay-layer: 90;
+        --action-bar-layer: 900;
+        --sidebar-layer: 1000;
+        --dialog-layer: 2000;
+        --tooltip-layer: 3000;
+        --mdc-theme-primary: var(--primary);
+        --mdc-theme-secondary: var(--secondary);
+      }
+
+      #container {
+        margin-top: 25px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      user agent stylesheet div {
+        display: block;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-family);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #212121;
+        accent-color: var(--primary);
+        color: #fff;
+        --app-share-color: black;
+      }
+    </style>
+  </head>
+  <body class="loaded">
+    <header>
+      <div class="header-grid">
+        <h1>Your JavaScript Knowledge Map</h1>
+        <app-button secondary="" outlined="" id="toggle-mode" class="hide-print"
+          >Toggle mode</app-button
+        >
+      </div>
+      <p>
+        This knowledge map shows most of the topics you need to know about when
+        learning modern JavaScript.
+      </p>
+      <p id="login-msg" class="hide-print">
+        Log in to the
+        <a href="/" target="_blank">LearnJavaScript.online</a> course. Completed
+        topics will be highlighted and linked to their related lessons.
+      </p>
+      <script>
+        window.localStorage.token &&
+          (document.querySelector("#login-msg").textContent =
+            "Completed topics are highlighted. You can click on them to review the related lesson.");
+      </script>
+      <a
+        id="feedback"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeKOLQ9aqxPgmV6m3flij2gtsjA1-hE39gkvxYHMK2e2j_LSA/viewform?usp=sf_link"
+        target="_blank"
+        class="hide-print"
+        >Feedback</a
+      >
+      <p id="progress-percentage">0%</p>
+      <div
+        id="progress"
+        role="progressbar"
+        class="mdc-linear-progress mdc-linear-progress--animation-ready"
+        aria-label="Knowledge map progress"
+        aria-valuemin="0"
+        aria-valuemax="1"
+        aria-valuenow="0.005952380952380952"
+      >
+        <div class="mdc-linear-progress__buffer">
+          <div class="mdc-linear-progress__buffer-bar"></div>
+          <div class="mdc-linear-progress__buffer-dots"></div>
+        </div>
+        <div
+          class="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
+          style="transform: scaleX(0.00595238)"
+        >
+          <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+        <div
+          class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar"
+        >
+          <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+      </div>
+    </header>
+    <div id="screenshot-container">
+      <div id="container">
+        <svg
+          id="knowledge-map"
+          viewBox="-225,-1745,1360,3420"
+          width="1360"
+          height="3420"
+          style="max-width: 100%; height: auto; height: intrinsic"
+          font-family="var(--font-family)"
+        >
+          <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
+            <path d="M0,0C90,0,90,-1565,180,-1565"></path>
+            <path d="M0,0C90,0,90,-1295,180,-1295"></path>
+            <path d="M0,0C90,0,90,-805,180,-805"></path>
+            <path d="M0,0C90,0,90,-355,180,-355"></path>
+            <path d="M0,0C90,0,90,-165,180,-165"></path>
+            <path d="M0,0C90,0,90,65,180,65"></path>
+            <path d="M0,0C90,0,90,275,180,275"></path>
+            <path d="M0,0C90,0,90,445,180,445"></path>
+            <path d="M0,0C90,0,90,685,180,685"></path>
+            <path d="M0,0C90,0,90,965,180,965"></path>
+            <path d="M0,0C90,0,90,1215,180,1215"></path>
+            <path d="M0,0C90,0,90,1375,180,1375"></path>
+            <path d="M0,0C90,0,90,1565,180,1565"></path>
+            <path d="M180,-1565C270,-1565,270,-1735,360,-1735"></path>
+            <path d="M180,-1565C270,-1565,270,-1715,360,-1715"></path>
+            <path d="M180,-1565C270,-1565,270,-1695,360,-1695"></path>
+            <path d="M180,-1565C270,-1565,270,-1675,360,-1675"></path>
+            <path d="M180,-1565C270,-1565,270,-1655,360,-1655"></path>
+            <path d="M180,-1565C270,-1565,270,-1635,360,-1635"></path>
+            <path d="M180,-1565C270,-1565,270,-1615,360,-1615"></path>
+            <path d="M180,-1565C270,-1565,270,-1595,360,-1595"></path>
+            <path d="M180,-1565C270,-1565,270,-1575,360,-1575"></path>
+            <path d="M180,-1565C270,-1565,270,-1555,360,-1555"></path>
+            <path d="M180,-1565C270,-1565,270,-1535,360,-1535"></path>
+            <path d="M180,-1565C270,-1565,270,-1515,360,-1515"></path>
+            <path d="M180,-1565C270,-1565,270,-1495,360,-1495"></path>
+            <path d="M180,-1565C270,-1565,270,-1475,360,-1475"></path>
+            <path d="M180,-1565C270,-1565,270,-1455,360,-1455"></path>
+            <path d="M180,-1565C270,-1565,270,-1435,360,-1435"></path>
+            <path d="M180,-1565C270,-1565,270,-1415,360,-1415"></path>
+            <path d="M180,-1565C270,-1565,270,-1395,360,-1395"></path>
+            <path d="M180,-1295C270,-1295,270,-1355,360,-1355"></path>
+            <path d="M180,-1295C270,-1295,270,-1335,360,-1335"></path>
+            <path d="M180,-1295C270,-1295,270,-1315,360,-1315"></path>
+            <path d="M180,-1295C270,-1295,270,-1295,360,-1295"></path>
+            <path d="M180,-1295C270,-1295,270,-1275,360,-1275"></path>
+            <path d="M180,-1295C270,-1295,270,-1255,360,-1255"></path>
+            <path d="M180,-1295C270,-1295,270,-1235,360,-1235"></path>
+            <path d="M180,-805C270,-805,270,-1115,360,-1115"></path>
+            <path d="M180,-805C270,-805,270,-795,360,-795"></path>
+            <path d="M180,-805C270,-805,270,-495,360,-495"></path>
+            <path d="M180,-355C270,-355,270,-455,360,-455"></path>
+            <path d="M180,-355C270,-355,270,-435,360,-435"></path>
+            <path d="M180,-355C270,-355,270,-415,360,-415"></path>
+            <path d="M180,-355C270,-355,270,-395,360,-395"></path>
+            <path d="M180,-355C270,-355,270,-375,360,-375"></path>
+            <path d="M180,-355C270,-355,270,-355,360,-355"></path>
+            <path d="M180,-355C270,-355,270,-335,360,-335"></path>
+            <path d="M180,-355C270,-355,270,-315,360,-315"></path>
+            <path d="M180,-355C270,-355,270,-295,360,-295"></path>
+            <path d="M180,-355C270,-355,270,-275,360,-275"></path>
+            <path d="M180,-355C270,-355,270,-255,360,-255"></path>
+            <path d="M180,-165C270,-165,270,-215,360,-215"></path>
+            <path d="M180,-165C270,-165,270,-195,360,-195"></path>
+            <path d="M180,-165C270,-165,270,-175,360,-175"></path>
+            <path d="M180,-165C270,-165,270,-155,360,-155"></path>
+            <path d="M180,-165C270,-165,270,-135,360,-135"></path>
+            <path d="M180,-165C270,-165,270,-115,360,-115"></path>
+            <path d="M180,65C270,65,270,-75,360,-75"></path>
+            <path d="M180,65C270,65,270,-55,360,-55"></path>
+            <path d="M180,65C270,65,270,-35,360,-35"></path>
+            <path d="M180,65C270,65,270,-15,360,-15"></path>
+            <path d="M180,65C270,65,270,5,360,5"></path>
+            <path d="M180,65C270,65,270,25,360,25"></path>
+            <path d="M180,65C270,65,270,45,360,45"></path>
+            <path d="M180,65C270,65,270,65,360,65"></path>
+            <path d="M180,65C270,65,270,85,360,85"></path>
+            <path d="M180,65C270,65,270,105,360,105"></path>
+            <path d="M180,65C270,65,270,125,360,125"></path>
+            <path d="M180,65C270,65,270,145,360,145"></path>
+            <path d="M180,65C270,65,270,165,360,165"></path>
+            <path d="M180,65C270,65,270,185,360,185"></path>
+            <path d="M180,65C270,65,270,205,360,205"></path>
+            <path d="M180,275C270,275,270,245,360,245"></path>
+            <path d="M180,275C270,275,270,265,360,265"></path>
+            <path d="M180,275C270,275,270,285,360,285"></path>
+            <path d="M180,275C270,275,270,305,360,305"></path>
+            <path d="M180,445C270,445,270,345,360,345"></path>
+            <path d="M180,445C270,445,270,365,360,365"></path>
+            <path d="M180,445C270,445,270,385,360,385"></path>
+            <path d="M180,445C270,445,270,405,360,405"></path>
+            <path d="M180,445C270,445,270,425,360,425"></path>
+            <path d="M180,445C270,445,270,445,360,445"></path>
+            <path d="M180,445C270,445,270,465,360,465"></path>
+            <path d="M180,445C270,445,270,485,360,485"></path>
+            <path d="M180,445C270,445,270,505,360,505"></path>
+            <path d="M180,445C270,445,270,525,360,525"></path>
+            <path d="M180,445C270,445,270,545,360,545"></path>
+            <path d="M180,685C270,685,270,585,360,585"></path>
+            <path d="M180,685C270,685,270,605,360,605"></path>
+            <path d="M180,685C270,685,270,625,360,625"></path>
+            <path d="M180,685C270,685,270,645,360,645"></path>
+            <path d="M180,685C270,685,270,665,360,665"></path>
+            <path d="M180,685C270,685,270,685,360,685"></path>
+            <path d="M180,685C270,685,270,705,360,705"></path>
+            <path d="M180,685C270,685,270,725,360,725"></path>
+            <path d="M180,685C270,685,270,745,360,745"></path>
+            <path d="M180,685C270,685,270,765,360,765"></path>
+            <path d="M180,685C270,685,270,785,360,785"></path>
+            <path d="M180,965C270,965,270,825,360,825"></path>
+            <path d="M180,965C270,965,270,845,360,845"></path>
+            <path d="M180,965C270,965,270,865,360,865"></path>
+            <path d="M180,965C270,965,270,885,360,885"></path>
+            <path d="M180,965C270,965,270,905,360,905"></path>
+            <path d="M180,965C270,965,270,925,360,925"></path>
+            <path d="M180,965C270,965,270,945,360,945"></path>
+            <path d="M180,965C270,965,270,965,360,965"></path>
+            <path d="M180,965C270,965,270,985,360,985"></path>
+            <path d="M180,965C270,965,270,1005,360,1005"></path>
+            <path d="M180,965C270,965,270,1025,360,1025"></path>
+            <path d="M180,965C270,965,270,1045,360,1045"></path>
+            <path d="M180,965C270,965,270,1065,360,1065"></path>
+            <path d="M180,965C270,965,270,1085,360,1085"></path>
+            <path d="M180,965C270,965,270,1105,360,1105"></path>
+            <path d="M180,1215C270,1215,270,1145,360,1145"></path>
+            <path d="M180,1215C270,1215,270,1165,360,1165"></path>
+            <path d="M180,1215C270,1215,270,1185,360,1185"></path>
+            <path d="M180,1215C270,1215,270,1205,360,1205"></path>
+            <path d="M180,1215C270,1215,270,1225,360,1225"></path>
+            <path d="M180,1215C270,1215,270,1245,360,1245"></path>
+            <path d="M180,1215C270,1215,270,1265,360,1265"></path>
+            <path d="M180,1215C270,1215,270,1285,360,1285"></path>
+            <path d="M180,1375C270,1375,270,1325,360,1325"></path>
+            <path d="M180,1375C270,1375,270,1345,360,1345"></path>
+            <path d="M180,1375C270,1375,270,1365,360,1365"></path>
+            <path d="M180,1375C270,1375,270,1385,360,1385"></path>
+            <path d="M180,1375C270,1375,270,1405,360,1405"></path>
+            <path d="M180,1375C270,1375,270,1425,360,1425"></path>
+            <path d="M180,1565C270,1565,270,1465,360,1465"></path>
+            <path d="M180,1565C270,1565,270,1485,360,1485"></path>
+            <path d="M180,1565C270,1565,270,1505,360,1505"></path>
+            <path d="M180,1565C270,1565,270,1525,360,1525"></path>
+            <path d="M180,1565C270,1565,270,1545,360,1545"></path>
+            <path d="M180,1565C270,1565,270,1565,360,1565"></path>
+            <path d="M180,1565C270,1565,270,1585,360,1585"></path>
+            <path d="M180,1565C270,1565,270,1605,360,1605"></path>
+            <path d="M180,1565C270,1565,270,1625,360,1625"></path>
+            <path d="M180,1565C270,1565,270,1645,360,1645"></path>
+            <path d="M180,1565C270,1565,270,1665,360,1665"></path>
+            <path d="M360,-1315C450,-1315,450,-1375,540,-1375"></path>
+            <path d="M360,-1315C450,-1315,450,-1355,540,-1355"></path>
+            <path d="M360,-1315C450,-1315,450,-1335,540,-1335"></path>
+            <path d="M360,-1315C450,-1315,450,-1315,540,-1315"></path>
+            <path d="M360,-1315C450,-1315,450,-1295,540,-1295"></path>
+            <path d="M360,-1315C450,-1315,450,-1275,540,-1275"></path>
+            <path d="M360,-1315C450,-1315,450,-1255,540,-1255"></path>
+            <path d="M360,-1115C450,-1115,450,-1215,540,-1215"></path>
+            <path d="M360,-1115C450,-1115,450,-1195,540,-1195"></path>
+            <path d="M360,-1115C450,-1115,450,-1175,540,-1175"></path>
+            <path d="M360,-1115C450,-1115,450,-1155,540,-1155"></path>
+            <path d="M360,-1115C450,-1115,450,-1135,540,-1135"></path>
+            <path d="M360,-1115C450,-1115,450,-1115,540,-1115"></path>
+            <path d="M360,-1115C450,-1115,450,-1095,540,-1095"></path>
+            <path d="M360,-1115C450,-1115,450,-1075,540,-1075"></path>
+            <path d="M360,-1115C450,-1115,450,-1055,540,-1055"></path>
+            <path d="M360,-1115C450,-1115,450,-1035,540,-1035"></path>
+            <path d="M360,-1115C450,-1115,450,-1015,540,-1015"></path>
+            <path d="M360,-795C450,-795,450,-975,540,-975"></path>
+            <path d="M360,-795C450,-795,450,-955,540,-955"></path>
+            <path d="M360,-795C450,-795,450,-935,540,-935"></path>
+            <path d="M360,-795C450,-795,450,-915,540,-915"></path>
+            <path d="M360,-795C450,-795,450,-895,540,-895"></path>
+            <path d="M360,-795C450,-795,450,-875,540,-875"></path>
+            <path d="M360,-795C450,-795,450,-855,540,-855"></path>
+            <path d="M360,-795C450,-795,450,-835,540,-835"></path>
+            <path d="M360,-795C450,-795,450,-815,540,-815"></path>
+            <path d="M360,-795C450,-795,450,-795,540,-795"></path>
+            <path d="M360,-795C450,-795,450,-775,540,-775"></path>
+            <path d="M360,-795C450,-795,450,-755,540,-755"></path>
+            <path d="M360,-795C450,-795,450,-735,540,-735"></path>
+            <path d="M360,-795C450,-795,450,-715,540,-715"></path>
+            <path d="M360,-795C450,-795,450,-695,540,-695"></path>
+            <path d="M360,-795C450,-795,450,-675,540,-675"></path>
+            <path d="M360,-795C450,-795,450,-655,540,-655"></path>
+            <path d="M360,-795C450,-795,450,-635,540,-635"></path>
+            <path d="M360,-795C450,-795,450,-615,540,-615"></path>
+            <path d="M360,-495C450,-495,450,-575,540,-575"></path>
+            <path d="M360,-495C450,-495,450,-555,540,-555"></path>
+            <path d="M360,-495C450,-495,450,-535,540,-535"></path>
+            <path d="M360,-495C450,-495,450,-515,540,-515"></path>
+            <path d="M360,-495C450,-495,450,-495,540,-495"></path>
+            <path d="M360,-495C450,-495,450,-475,540,-475"></path>
+            <path d="M360,-495C450,-495,450,-455,540,-455"></path>
+            <path d="M360,-495C450,-495,450,-435,540,-435"></path>
+            <path d="M360,-495C450,-495,450,-415,540,-415"></path>
+          </g>
+          <g>
+            <text transform="translate(9,7)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              ></tspan>
+            </text>
+            <text transform="translate(189,-1558)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Arrays
+              </tspan>
+            </text>
+            <text transform="translate(189,-1288)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Classes
+              </tspan>
+            </text>
+            <text transform="translate(189,-798)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                DOM
+              </tspan>
+            </text>
+            <text transform="translate(189,-348)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Functions
+              </tspan>
+            </text>
+            <text transform="translate(189,-158)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Misc
+              </tspan>
+            </text>
+            <text transform="translate(189,72)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Modules
+              </tspan>
+            </text>
+            <text transform="translate(189,282)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Number
+              </tspan>
+            </text>
+            <text transform="translate(189,452)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Objects
+              </tspan>
+            </text>
+            <text transform="translate(189,692)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Promises
+              </tspan>
+            </text>
+            <text transform="translate(189,972)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Strings
+              </tspan>
+            </text>
+            <text transform="translate(189,1222)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Syntax
+              </tspan>
+            </text>
+            <text transform="translate(189,1382)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Variables
+              </tspan>
+            </text>
+            <text transform="translate(189,1572)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                fetch API
+              </tspan>
+            </text>
+            <text transform="translate(369,-1731)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1571"
+                data-chapter="14"
+                data-step-id="1571"
+                style="pointer-events: auto"
+              >
+                ... (spread)
+              </tspan>
+            </text>
+            <text transform="translate(369,-1711)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1483"
+                data-chapter="6"
+                data-step-id="1483"
+                style="pointer-events: auto"
+              >
+                .at()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1691)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1552"
+                data-chapter="12"
+                data-step-id="1552"
+                style="pointer-events: auto"
+              >
+                .every()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1671)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1500"
+                data-chapter="7"
+                data-step-id="1500"
+                style="pointer-events: auto"
+              >
+                .filter()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1651)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1503"
+                data-chapter="7"
+                data-step-id="1503"
+                style="pointer-events: auto"
+              >
+                .find()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1631)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1490"
+                data-chapter="6"
+                data-step-id="1490"
+                style="pointer-events: auto"
+              >
+                .forEach()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1611)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1506"
+                data-chapter="7"
+                data-step-id="1506"
+                style="pointer-events: auto"
+              >
+                .includes()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1591)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1506"
+                data-chapter="7"
+                data-step-id="1506"
+                style="pointer-events: auto"
+              >
+                .join()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1571)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1483"
+                data-chapter="6"
+                data-step-id="1483"
+                style="pointer-events: auto"
+              >
+                .length
+              </tspan>
+            </text>
+            <text transform="translate(369,-1551)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1506"
+                data-chapter="7"
+                data-step-id="1506"
+                style="pointer-events: auto"
+              >
+                .map()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1531)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1483"
+                data-chapter="6"
+                data-step-id="1483"
+                style="pointer-events: auto"
+              >
+                .push()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1511)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1560"
+                data-chapter="13"
+                data-step-id="1560"
+                style="pointer-events: auto"
+              >
+                .reduce()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1491)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1552"
+                data-chapter="12"
+                data-step-id="1552"
+                style="pointer-events: auto"
+              >
+                .some()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1471)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1555"
+                data-chapter="12"
+                data-step-id="1555"
+                style="pointer-events: auto"
+              >
+                .splice()
+              </tspan>
+            </text>
+            <text transform="translate(369,-1451)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1595"
+                data-chapter="17"
+                data-step-id="1595"
+                style="pointer-events: auto"
+              >
+                ?. (optional chaining)
+              </tspan>
+            </text>
+            <text transform="translate(369,-1431)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1612"
+                data-chapter="20"
+                data-step-id="1612"
+                style="pointer-events: auto"
+              >
+                Arrays of objects
+              </tspan>
+            </text>
+            <text transform="translate(369,-1411)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1483"
+                data-chapter="6"
+                data-step-id="1483"
+                style="pointer-events: auto"
+              >
+                [] (get item)
+              </tspan>
+            </text>
+            <text transform="translate(369,-1391)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1568"
+                data-chapter="14"
+                data-step-id="1568"
+                style="pointer-events: auto"
+              >
+                destructuring
+              </tspan>
+            </text>
+            <text transform="translate(369,-1351)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1657"
+                data-chapter="27"
+                data-step-id="1657"
+                style="pointer-events: auto"
+              >
+                Classes
+              </tspan>
+            </text>
+            <text transform="translate(369,-1331)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1670"
+                data-chapter="29"
+                data-step-id="1670"
+                style="pointer-events: auto"
+              >
+                Getters
+              </tspan>
+            </text>
+            <text transform="translate(369,-1308)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Inheritance
+              </tspan>
+            </text>
+            <text transform="translate(369,-1291)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1664"
+                data-chapter="28"
+                data-step-id="1664"
+                style="pointer-events: auto"
+              >
+                Instance methods
+              </tspan>
+            </text>
+            <text transform="translate(369,-1271)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1660"
+                data-chapter="27"
+                data-step-id="1660"
+                style="pointer-events: auto"
+              >
+                Instance variables
+              </tspan>
+            </text>
+            <text transform="translate(369,-1251)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1670"
+                data-chapter="29"
+                data-step-id="1670"
+                style="pointer-events: auto"
+              >
+                Setters
+              </tspan>
+            </text>
+            <text transform="translate(369,-1231)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1673"
+                data-chapter="29"
+                data-step-id="1673"
+                style="pointer-events: auto"
+              >
+                Static methods
+              </tspan>
+            </text>
+            <text transform="translate(369,-1108)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Events
+              </tspan>
+            </text>
+            <text transform="translate(369,-788)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                HTML Element
+              </tspan>
+            </text>
+            <text transform="translate(369,-488)">
+              <tspan
+                target="_blank"
+                class="parent-category"
+                font-weight="bold"
+                href=""
+                style="pointer-events: none"
+              >
+                Selection
+              </tspan>
+            </text>
+            <text transform="translate(369,-451)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1522"
+                data-chapter="9"
+                data-step-id="1522"
+                style="pointer-events: auto"
+              >
+                =&gt; (arrow functions)
+              </tspan>
+            </text>
+            <text transform="translate(369,-431)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1595"
+                data-chapter="17"
+                data-step-id="1595"
+                style="pointer-events: auto"
+              >
+                ?. (optional chaining)
+              </tspan>
+            </text>
+            <text transform="translate(369,-411)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1700"
+                data-chapter="34"
+                data-step-id="1700"
+                style="pointer-events: auto"
+              >
+                Asynchronous callbacks
+              </tspan>
+            </text>
+            <text transform="translate(369,-391)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1707"
+                data-chapter="35"
+                data-step-id="1707"
+                style="pointer-events: auto"
+              >
+                Callback pattern
+              </tspan>
+            </text>
+            <text transform="translate(369,-371)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1976"
+                data-chapter="73"
+                data-step-id="1976"
+                style="pointer-events: auto"
+              >
+                Closures
+              </tspan>
+            </text>
+            <text transform="translate(369,-351)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1971"
+                data-chapter="71"
+                data-step-id="1971"
+                style="pointer-events: auto"
+              >
+                Hoisting
+              </tspan>
+            </text>
+            <text transform="translate(369,-331)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1912"
+                data-chapter="62"
+                data-step-id="1912"
+                style="pointer-events: auto"
+              >
+                Lexical scope
+              </tspan>
+            </text>
+            <text transform="translate(369,-311)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1914"
+                data-chapter="62"
+                data-step-id="1914"
+                style="pointer-events: auto"
+              >
+                Passing functions
+              </tspan>
+            </text>
+            <text transform="translate(369,-291)">
+              <a
+                target="_blank"
+                class="step-link"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1435"
+                data-chapter="1"
+                data-step-id="1435"
+                style="pointer-events: auto"
+              >
+                basic functions
+              </a>
+            </text>
+            <text transform="translate(369,-271)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1519"
+                data-chapter="9"
+                data-step-id="1519"
+                style="pointer-events: auto"
+              >
+                default parameters
+              </tspan>
+            </text>
+            <text transform="translate(369,-251)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1531"
+                data-chapter="10"
+                data-step-id="1531"
+                style="pointer-events: auto"
+              >
+                implicit return
+              </tspan>
+            </text>
+            <text transform="translate(369,-211)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1645"
+                data-chapter="25"
+                data-step-id="1645"
+                style="pointer-events: auto"
+              >
+                Deep equal
+              </tspan>
+            </text>
+            <text transform="translate(369,-191)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1964"
+                data-chapter="70"
+                data-step-id="1964"
+                style="pointer-events: auto"
+              >
+                EcmaScript
+              </tspan>
+            </text>
+            <text transform="translate(369,-171)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1993"
+                data-chapter="75"
+                data-step-id="1993"
+                style="pointer-events: auto"
+              >
+                Event loop
+              </tspan>
+            </text>
+            <text transform="translate(369,-151)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1974"
+                data-chapter="72"
+                data-step-id="1974"
+                style="pointer-events: auto"
+              >
+                IIFE
+              </tspan>
+            </text>
+            <text transform="translate(369,-131)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1644"
+                data-chapter="25"
+                data-step-id="1644"
+                style="pointer-events: auto"
+              >
+                Immutability
+              </tspan>
+            </text>
+            <text transform="translate(369,-111)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1973"
+                data-chapter="72"
+                data-step-id="1973"
+                style="pointer-events: auto"
+              >
+                Window
+              </tspan>
+            </text>
+            <text transform="translate(369,-71)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1771"
+                data-chapter="46"
+                data-step-id="1771"
+                style="pointer-events: auto"
+              >
+                ES Modules
+              </tspan>
+            </text>
+            <text transform="translate(369,-51)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1956"
+                data-chapter="69"
+                data-step-id="1956"
+                style="pointer-events: auto"
+              >
+                Importing from libraries
+              </tspan>
+            </text>
+            <text transform="translate(369,-31)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1952"
+                data-chapter="68"
+                data-step-id="1952"
+                style="pointer-events: auto"
+              >
+                Module bundlers
+              </tspan>
+            </text>
+            <text transform="translate(369,-11)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1943"
+                data-chapter="67"
+                data-step-id="1943"
+                style="pointer-events: auto"
+              >
+                Package managers
+              </tspan>
+            </text>
+            <text transform="translate(369,9)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1953"
+                data-chapter="68"
+                data-step-id="1953"
+                style="pointer-events: auto"
+              >
+                Parcel
+              </tspan>
+            </text>
+            <text transform="translate(369,29)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=2680"
+                data-chapter="68"
+                data-step-id="2680"
+                style="pointer-events: auto"
+              >
+                Vite
+              </tspan>
+            </text>
+            <text transform="translate(369,49)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1954"
+                data-chapter="68"
+                data-step-id="1954"
+                style="pointer-events: auto"
+              >
+                Webpack
+              </tspan>
+            </text>
+            <text transform="translate(369,69)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1774"
+                data-chapter="46"
+                data-step-id="1774"
+                style="pointer-events: auto"
+              >
+                default export
+              </tspan>
+            </text>
+            <text transform="translate(369,89)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1771"
+                data-chapter="46"
+                data-step-id="1771"
+                style="pointer-events: auto"
+              >
+                import
+              </tspan>
+            </text>
+            <text transform="translate(369,109)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1961"
+                data-chapter="69"
+                data-step-id="1961"
+                style="pointer-events: auto"
+              >
+                import() (dynamic imports)
+              </tspan>
+            </text>
+            <text transform="translate(369,129)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1771"
+                data-chapter="46"
+                data-step-id="1771"
+                style="pointer-events: auto"
+              >
+                named export
+              </tspan>
+            </text>
+            <text transform="translate(369,149)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1949"
+                data-chapter="67"
+                data-step-id="1949"
+                style="pointer-events: auto"
+              >
+                npm
+              </tspan>
+            </text>
+            <text transform="translate(369,169)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1946"
+                data-chapter="67"
+                data-step-id="1946"
+                style="pointer-events: auto"
+              >
+                package.json
+              </tspan>
+            </text>
+            <text transform="translate(369,189)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1951"
+                data-chapter="68"
+                data-step-id="1951"
+                style="pointer-events: auto"
+              >
+                script type="module"
+              </tspan>
+            </text>
+            <text transform="translate(369,209)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1949"
+                data-chapter="67"
+                data-step-id="1949"
+                style="pointer-events: auto"
+              >
+                yarn
+              </tspan>
+            </text>
+            <text transform="translate(369,249)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1461"
+                data-chapter="3"
+                data-step-id="1461"
+                style="pointer-events: auto"
+              >
+                .toString()
+              </tspan>
+            </text>
+            <text transform="translate(369,269)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1466"
+                data-chapter="3"
+                data-step-id="1466"
+                style="pointer-events: auto"
+              >
+                Division remainder (%)
+              </tspan>
+            </text>
+            <text transform="translate(369,289)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1461"
+                data-chapter="3"
+                data-step-id="1461"
+                style="pointer-events: auto"
+              >
+                NaN
+              </tspan>
+            </text>
+            <text transform="translate(369,309)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1461"
+                data-chapter="3"
+                data-step-id="1461"
+                style="pointer-events: auto"
+              >
+                Number.parseInt()
+              </tspan>
+            </text>
+            <text transform="translate(369,349)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1587"
+                data-chapter="16"
+                data-step-id="1587"
+                style="pointer-events: auto"
+              >
+                ... (spread)
+              </tspan>
+            </text>
+            <text transform="translate(369,369)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1592"
+                data-chapter="17"
+                data-step-id="1592"
+                style="pointer-events: auto"
+              >
+                ?. (optional chaining)
+              </tspan>
+            </text>
+            <text transform="translate(369,389)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1603"
+                data-chapter="18"
+                data-step-id="1603"
+                style="pointer-events: auto"
+              >
+                ?? (nullish coalescing)
+              </tspan>
+            </text>
+            <text transform="translate(369,409)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1608"
+                data-chapter="19"
+                data-step-id="1608"
+                style="pointer-events: auto"
+              >
+                Advanced control flow
+              </tspan>
+            </text>
+            <text transform="translate(369,429)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1580"
+                data-chapter="15"
+                data-step-id="1580"
+                style="pointer-events: auto"
+              >
+                Object.entries()
+              </tspan>
+            </text>
+            <text transform="translate(369,449)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1574"
+                data-chapter="15"
+                data-step-id="1574"
+                style="pointer-events: auto"
+              >
+                Object.keys()
+              </tspan>
+            </text>
+            <text transform="translate(369,469)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1580"
+                data-chapter="15"
+                data-step-id="1580"
+                style="pointer-events: auto"
+              >
+                Object.values()
+              </tspan>
+            </text>
+            <text transform="translate(369,489)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1587"
+                data-chapter="16"
+                data-step-id="1587"
+                style="pointer-events: auto"
+              >
+                destructuring
+              </tspan>
+            </text>
+            <text transform="translate(369,509)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1574"
+                data-chapter="15"
+                data-step-id="1574"
+                style="pointer-events: auto"
+              >
+                dynamic properties
+              </tspan>
+            </text>
+            <text transform="translate(369,529)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1584"
+                data-chapter="16"
+                data-step-id="1584"
+                style="pointer-events: auto"
+              >
+                object shorthand
+              </tspan>
+            </text>
+            <text transform="translate(369,549)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1512"
+                data-chapter="8"
+                data-step-id="1512"
+                style="pointer-events: auto"
+              >
+                property access
+              </tspan>
+            </text>
+            <text transform="translate(369,589)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1726"
+                data-chapter="38"
+                data-step-id="1726"
+                style="pointer-events: auto"
+              >
+                .catch()
+              </tspan>
+            </text>
+            <text transform="translate(369,609)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1729"
+                data-chapter="38"
+                data-step-id="1729"
+                style="pointer-events: auto"
+              >
+                .finally()
+              </tspan>
+            </text>
+            <text transform="translate(369,629)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1722"
+                data-chapter="37"
+                data-step-id="1722"
+                style="pointer-events: auto"
+              >
+                .then()
+              </tspan>
+            </text>
+            <text transform="translate(369,649)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1738"
+                data-chapter="40"
+                data-step-id="1738"
+                style="pointer-events: auto"
+              >
+                Promise.reject()
+              </tspan>
+            </text>
+            <text transform="translate(369,669)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1735"
+                data-chapter="39"
+                data-step-id="1735"
+                style="pointer-events: auto"
+              >
+                Promise.resolve()
+              </tspan>
+            </text>
+            <text transform="translate(369,689)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1712"
+                data-chapter="36"
+                data-step-id="1712"
+                style="pointer-events: auto"
+              >
+                Promises
+              </tspan>
+            </text>
+            <text transform="translate(369,709)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1921"
+                data-chapter="64"
+                data-step-id="1921"
+                style="pointer-events: auto"
+              >
+                async function
+              </tspan>
+            </text>
+            <text transform="translate(369,729)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1931"
+                data-chapter="65"
+                data-step-id="1931"
+                style="pointer-events: auto"
+              >
+                async/await
+              </tspan>
+            </text>
+            <text transform="translate(369,749)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1928"
+                data-chapter="65"
+                data-step-id="1928"
+                style="pointer-events: auto"
+              >
+                await keyword
+              </tspan>
+            </text>
+            <text transform="translate(369,769)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1732"
+                data-chapter="39"
+                data-step-id="1732"
+                style="pointer-events: auto"
+              >
+                new Promise()
+              </tspan>
+            </text>
+            <text transform="translate(369,789)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1719"
+                data-chapter="37"
+                data-step-id="1719"
+                style="pointer-events: auto"
+              >
+                states
+              </tspan>
+            </text>
+            <text transform="translate(369,829)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1444"
+                data-chapter="2"
+                data-step-id="1444"
+                style="pointer-events: auto"
+              >
+                .at()
+              </tspan>
+            </text>
+            <text transform="translate(369,849)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1541"
+                data-chapter="11"
+                data-step-id="1541"
+                style="pointer-events: auto"
+              >
+                .endsWith()
+              </tspan>
+            </text>
+            <text transform="translate(369,869)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1541"
+                data-chapter="11"
+                data-step-id="1541"
+                style="pointer-events: auto"
+              >
+                .includes()
+              </tspan>
+            </text>
+            <text transform="translate(369,889)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1440"
+                data-chapter="2"
+                data-step-id="1440"
+                style="pointer-events: auto"
+              >
+                .length
+              </tspan>
+            </text>
+            <text transform="translate(369,909)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1545"
+                data-chapter="11"
+                data-step-id="1545"
+                style="pointer-events: auto"
+              >
+                .replace()
+              </tspan>
+            </text>
+            <text transform="translate(369,929)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1545"
+                data-chapter="11"
+                data-step-id="1545"
+                style="pointer-events: auto"
+              >
+                .replaceAll()
+              </tspan>
+            </text>
+            <text transform="translate(369,949)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1545"
+                data-chapter="11"
+                data-step-id="1545"
+                style="pointer-events: auto"
+              >
+                .split()
+              </tspan>
+            </text>
+            <text transform="translate(369,969)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1541"
+                data-chapter="11"
+                data-step-id="1541"
+                style="pointer-events: auto"
+              >
+                .startsWith()
+              </tspan>
+            </text>
+            <text transform="translate(369,989)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1447"
+                data-chapter="2"
+                data-step-id="1447"
+                style="pointer-events: auto"
+              >
+                .substring()
+              </tspan>
+            </text>
+            <text transform="translate(369,1009)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1440"
+                data-chapter="2"
+                data-step-id="1440"
+                style="pointer-events: auto"
+              >
+                .toLowerCase()
+              </tspan>
+            </text>
+            <text transform="translate(369,1029)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1440"
+                data-chapter="2"
+                data-step-id="1440"
+                style="pointer-events: auto"
+              >
+                .toUpperCase()
+              </tspan>
+            </text>
+            <text transform="translate(369,1049)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1541"
+                data-chapter="11"
+                data-step-id="1541"
+                style="pointer-events: auto"
+              >
+                .trim()
+              </tspan>
+            </text>
+            <text transform="translate(369,1069)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1450"
+                data-chapter="2"
+                data-step-id="1450"
+                style="pointer-events: auto"
+              >
+                Concatenation
+              </tspan>
+            </text>
+            <text transform="translate(369,1089)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1453"
+                data-chapter="2"
+                data-step-id="1453"
+                style="pointer-events: auto"
+              >
+                Template strings
+              </tspan>
+            </text>
+            <text transform="translate(369,1109)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1444"
+                data-chapter="2"
+                data-step-id="1444"
+                style="pointer-events: auto"
+              >
+                [] (character access)
+              </tspan>
+            </text>
+            <text transform="translate(369,1149)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1917"
+                data-chapter="63"
+                data-step-id="1917"
+                style="pointer-events: auto"
+              >
+                Exceptions
+              </tspan>
+            </text>
+            <text transform="translate(369,1169)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1639"
+                data-chapter="24"
+                data-step-id="1639"
+                style="pointer-events: auto"
+              >
+                Semi-colons
+              </tspan>
+            </text>
+            <text transform="translate(369,1189)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1981"
+                data-chapter="74"
+                data-step-id="1981"
+                style="pointer-events: auto"
+              >
+                for (loops)
+              </tspan>
+            </text>
+            <text transform="translate(369,1209)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1987"
+                data-chapter="74"
+                data-step-id="1987"
+                style="pointer-events: auto"
+              >
+                for...in
+              </tspan>
+            </text>
+            <text transform="translate(369,1229)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1985"
+                data-chapter="74"
+                data-step-id="1985"
+                style="pointer-events: auto"
+              >
+                for...of
+              </tspan>
+            </text>
+            <text transform="translate(369,1249)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1473"
+                data-chapter="5"
+                data-step-id="1473"
+                style="pointer-events: auto"
+              >
+                if
+              </tspan>
+            </text>
+            <text transform="translate(369,1269)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1635"
+                data-chapter="23"
+                data-step-id="1635"
+                style="pointer-events: auto"
+              >
+                try...catch
+              </tspan>
+            </text>
+            <text transform="translate(369,1289)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1942"
+                data-chapter="66"
+                data-step-id="1942"
+                style="pointer-events: auto"
+              >
+                try...catch...finally
+              </tspan>
+            </text>
+            <text transform="translate(369,1329)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1599"
+                data-chapter="18"
+                data-step-id="1599"
+                style="pointer-events: auto"
+              >
+                ?? (nullish coalescing)
+              </tspan>
+            </text>
+            <text transform="translate(369,1349)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1969"
+                data-chapter="71"
+                data-step-id="1969"
+                style="pointer-events: auto"
+              >
+                Hoisting
+              </tspan>
+            </text>
+            <text transform="translate(369,1369)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1969"
+                data-chapter="71"
+                data-step-id="1969"
+                style="pointer-events: auto"
+              >
+                Temporal Dead Zone
+              </tspan>
+            </text>
+            <text transform="translate(369,1389)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1469"
+                data-chapter="4"
+                data-step-id="1469"
+                style="pointer-events: auto"
+              >
+                const
+              </tspan>
+            </text>
+            <text transform="translate(369,1409)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1469"
+                data-chapter="4"
+                data-step-id="1469"
+                style="pointer-events: auto"
+              >
+                let
+              </tspan>
+            </text>
+            <text transform="translate(369,1429)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1968"
+                data-chapter="71"
+                data-step-id="1968"
+                style="pointer-events: auto"
+              >
+                var (legacy)
+              </tspan>
+            </text>
+            <text transform="translate(369,1469)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1767"
+                data-chapter="45"
+                data-step-id="1767"
+                style="pointer-events: auto"
+              >
+                DELETE
+              </tspan>
+            </text>
+            <text transform="translate(369,1489)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1762"
+                data-chapter="44"
+                data-step-id="1762"
+                style="pointer-events: auto"
+              >
+                Error handling
+              </tspan>
+            </text>
+            <text transform="translate(369,1509)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1778"
+                data-chapter="47"
+                data-step-id="1778"
+                style="pointer-events: auto"
+              >
+                Fetch Wrapper
+              </tspan>
+            </text>
+            <text transform="translate(369,1529)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1751"
+                data-chapter="42"
+                data-step-id="1751"
+                style="pointer-events: auto"
+              >
+                GET
+              </tspan>
+            </text>
+            <text transform="translate(369,1549)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1743"
+                data-chapter="41"
+                data-step-id="1743"
+                style="pointer-events: auto"
+              >
+                JSON.parse()
+              </tspan>
+            </text>
+            <text transform="translate(369,1569)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1743"
+                data-chapter="41"
+                data-step-id="1743"
+                style="pointer-events: auto"
+              >
+                JSON.stringify()
+              </tspan>
+            </text>
+            <text transform="translate(369,1589)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1767"
+                data-chapter="45"
+                data-step-id="1767"
+                style="pointer-events: auto"
+              >
+                POST
+              </tspan>
+            </text>
+            <text transform="translate(369,1609)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1767"
+                data-chapter="45"
+                data-step-id="1767"
+                style="pointer-events: auto"
+              >
+                PUT
+              </tspan>
+            </text>
+            <text transform="translate(369,1629)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1761"
+                data-chapter="44"
+                data-step-id="1761"
+                style="pointer-events: auto"
+              >
+                Response status codes
+              </tspan>
+            </text>
+            <text transform="translate(369,1649)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1749"
+                data-chapter="42"
+                data-step-id="1749"
+                style="pointer-events: auto"
+              >
+                Response.json()
+              </tspan>
+            </text>
+            <text transform="translate(369,1669)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1747"
+                data-chapter="42"
+                data-step-id="1747"
+                style="pointer-events: auto"
+              >
+                fetch()
+              </tspan>
+            </text>
+            <text transform="translate(549,-1371)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1684"
+                data-chapter="31"
+                data-step-id="1684"
+                style="pointer-events: auto"
+              >
+                Class vs Function
+              </tspan>
+            </text>
+            <text transform="translate(549,-1351)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1698"
+                data-chapter="33"
+                data-step-id="1698"
+                style="pointer-events: auto"
+              >
+                Private class fields
+              </tspan>
+            </text>
+            <text transform="translate(549,-1331)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1697"
+                data-chapter="33"
+                data-step-id="1697"
+                style="pointer-events: auto"
+              >
+                Public class fields
+              </tspan>
+            </text>
+            <text transform="translate(549,-1311)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1677"
+                data-chapter="30"
+                data-step-id="1677"
+                style="pointer-events: auto"
+              >
+                inheritance
+              </tspan>
+            </text>
+            <text transform="translate(549,-1291)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1686"
+                data-chapter="31"
+                data-step-id="1686"
+                style="pointer-events: auto"
+              >
+                prototypal inheritance
+              </tspan>
+            </text>
+            <text transform="translate(549,-1271)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1687"
+                data-chapter="31"
+                data-step-id="1687"
+                style="pointer-events: auto"
+              >
+                prototype chain
+              </tspan>
+            </text>
+            <text transform="translate(549,-1251)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1677"
+                data-chapter="30"
+                data-step-id="1677"
+                style="pointer-events: auto"
+              >
+                super()
+              </tspan>
+            </text>
+            <text transform="translate(549,-1211)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1888"
+                data-chapter="57"
+                data-step-id="1888"
+                style="pointer-events: auto"
+              >
+                Change
+              </tspan>
+            </text>
+            <text transform="translate(549,-1191)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1888"
+                data-chapter="57"
+                data-step-id="1888"
+                style="pointer-events: auto"
+              >
+                DOMContentLoaded
+              </tspan>
+            </text>
+            <text transform="translate(549,-1171)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1866"
+                data-chapter="56"
+                data-step-id="1866"
+                style="pointer-events: auto"
+              >
+                Event details
+              </tspan>
+            </text>
+            <text transform="translate(549,-1151)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1888"
+                data-chapter="57"
+                data-step-id="1888"
+                style="pointer-events: auto"
+              >
+                Focus/blur
+              </tspan>
+            </text>
+            <text transform="translate(549,-1131)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1888"
+                data-chapter="57"
+                data-step-id="1888"
+                style="pointer-events: auto"
+              >
+                Keydown/keyup
+              </tspan>
+            </text>
+            <text transform="translate(549,-1111)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1888"
+                data-chapter="57"
+                data-step-id="1888"
+                style="pointer-events: auto"
+              >
+                Scroll
+              </tspan>
+            </text>
+            <text transform="translate(549,-1091)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1879"
+                data-chapter="57"
+                data-step-id="1879"
+                style="pointer-events: auto"
+              >
+                Submit
+              </tspan>
+            </text>
+            <text transform="translate(549,-1071)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1857"
+                data-chapter="55"
+                data-step-id="1857"
+                style="pointer-events: auto"
+              >
+                element.addEventListener()
+              </tspan>
+            </text>
+            <text transform="translate(549,-1051)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1885"
+                data-chapter="58"
+                data-step-id="1885"
+                style="pointer-events: auto"
+              >
+                element.removeEventListener()
+              </tspan>
+            </text>
+            <text transform="translate(549,-1031)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1868"
+                data-chapter="56"
+                data-step-id="1868"
+                style="pointer-events: auto"
+              >
+                event.currentTarget
+              </tspan>
+            </text>
+            <text transform="translate(549,-1011)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1879"
+                data-chapter="57"
+                data-step-id="1879"
+                style="pointer-events: auto"
+              >
+                event.preventDefault()
+              </tspan>
+            </text>
+            <text transform="translate(549,-971)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1822"
+                data-chapter="51"
+                data-step-id="1822"
+                style="pointer-events: auto"
+              >
+                .classList.add()
+              </tspan>
+            </text>
+            <text transform="translate(549,-951)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1826"
+                data-chapter="51"
+                data-step-id="1826"
+                style="pointer-events: auto"
+              >
+                .classList.contains()
+              </tspan>
+            </text>
+            <text transform="translate(549,-931)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1822"
+                data-chapter="51"
+                data-step-id="1822"
+                style="pointer-events: auto"
+              >
+                .classList.remove()
+              </tspan>
+            </text>
+            <text transform="translate(549,-911)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1826"
+                data-chapter="51"
+                data-step-id="1826"
+                style="pointer-events: auto"
+              >
+                .classList.replace()
+              </tspan>
+            </text>
+            <text transform="translate(549,-891)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1826"
+                data-chapter="51"
+                data-step-id="1826"
+                style="pointer-events: auto"
+              >
+                .classList.toggle()
+              </tspan>
+            </text>
+            <text transform="translate(549,-871)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1841"
+                data-chapter="53"
+                data-step-id="1841"
+                style="pointer-events: auto"
+              >
+                .dataset
+              </tspan>
+            </text>
+            <text transform="translate(549,-851)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1830"
+                data-chapter="52"
+                data-step-id="1830"
+                style="pointer-events: auto"
+              >
+                .getAttribute()
+              </tspan>
+            </text>
+            <text transform="translate(549,-831)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1810"
+                data-chapter="50"
+                data-step-id="1810"
+                style="pointer-events: auto"
+              >
+                .innerHTML
+              </tspan>
+            </text>
+            <text transform="translate(549,-811)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1848"
+                data-chapter="54"
+                data-step-id="1848"
+                style="pointer-events: auto"
+              >
+                .insertAdjacentHTML()
+              </tspan>
+            </text>
+            <text transform="translate(549,-791)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1844"
+                data-chapter="53"
+                data-step-id="1844"
+                style="pointer-events: auto"
+              >
+                .parentElement
+              </tspan>
+            </text>
+            <text transform="translate(549,-771)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1838"
+                data-chapter="53"
+                data-step-id="1838"
+                style="pointer-events: auto"
+              >
+                .remove()
+              </tspan>
+            </text>
+            <text transform="translate(549,-751)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1830"
+                data-chapter="52"
+                data-step-id="1830"
+                style="pointer-events: auto"
+              >
+                .removeAttribute()
+              </tspan>
+            </text>
+            <text transform="translate(549,-731)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1830"
+                data-chapter="52"
+                data-step-id="1830"
+                style="pointer-events: auto"
+              >
+                .setAttribute()
+              </tspan>
+            </text>
+            <text transform="translate(549,-711)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1834"
+                data-chapter="52"
+                data-step-id="1834"
+                style="pointer-events: auto"
+              >
+                .style
+              </tspan>
+            </text>
+            <text transform="translate(549,-691)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1794"
+                data-chapter="48"
+                data-step-id="1794"
+                style="pointer-events: auto"
+              >
+                .textContent
+              </tspan>
+            </text>
+            <text transform="translate(549,-671)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1815"
+                data-chapter="50"
+                data-step-id="1815"
+                style="pointer-events: auto"
+              >
+                .value
+              </tspan>
+            </text>
+            <text transform="translate(549,-651)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1910"
+                data-chapter="61"
+                data-step-id="1910"
+                style="pointer-events: auto"
+              >
+                HTMLElement
+              </tspan>
+            </text>
+            <text transform="translate(549,-631)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1854"
+                data-chapter="54"
+                data-step-id="1854"
+                style="pointer-events: auto"
+              >
+                document.appendChild()
+              </tspan>
+            </text>
+            <text transform="translate(549,-611)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1854"
+                data-chapter="54"
+                data-step-id="1854"
+                style="pointer-events: auto"
+              >
+                document.createElement()
+              </tspan>
+            </text>
+            <text transform="translate(549,-571)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1803"
+                data-chapter="49"
+                data-step-id="1803"
+                style="pointer-events: auto"
+              >
+                NodeList
+              </tspan>
+            </text>
+            <text transform="translate(549,-551)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1806"
+                data-chapter="49"
+                data-step-id="1806"
+                style="pointer-events: auto"
+              >
+                NodeList to Array
+              </tspan>
+            </text>
+            <text transform="translate(549,-531)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1791"
+                data-chapter="48"
+                data-step-id="1791"
+                style="pointer-events: auto"
+              >
+                document
+              </tspan>
+            </text>
+            <text transform="translate(549,-511)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1838"
+                data-chapter="53"
+                data-step-id="1838"
+                style="pointer-events: auto"
+              >
+                document.body
+              </tspan>
+            </text>
+            <text transform="translate(549,-491)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1838"
+                data-chapter="53"
+                data-step-id="1838"
+                style="pointer-events: auto"
+              >
+                document.documentElement
+              </tspan>
+            </text>
+            <text transform="translate(549,-471)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1798"
+                data-chapter="48"
+                data-step-id="1798"
+                style="pointer-events: auto"
+              >
+                document.getElementById()
+              </tspan>
+            </text>
+            <text transform="translate(549,-451)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1791"
+                data-chapter="48"
+                data-step-id="1791"
+                style="pointer-events: auto"
+              >
+                document.querySelector()
+              </tspan>
+            </text>
+            <text transform="translate(549,-431)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1800"
+                data-chapter="49"
+                data-step-id="1800"
+                style="pointer-events: auto"
+              >
+                document.querySelectorAll()
+              </tspan>
+            </text>
+            <text transform="translate(549,-411)">
+              <tspan
+                target="_blank"
+                class="step-text"
+                font-weight="normal"
+                href="https://learnjavascript.online/app.html?id=1844"
+                data-chapter="53"
+                data-step-id="1844"
+                style="pointer-events: auto"
+              >
+                element.closest()
+              </tspan>
+            </text>
+          </g>
+          <g>
+            <circle transform="translate(1,0)" fill="#888" r="2.5"></circle>
+            <circle
+              transform="translate(181,-1565)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,-1295)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,-805)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,-355)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,-165)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle transform="translate(181,65)" fill="#888" r="2.5"></circle>
+            <circle transform="translate(181,275)" fill="#888" r="2.5"></circle>
+            <circle transform="translate(181,445)" fill="#888" r="2.5"></circle>
+            <circle transform="translate(181,685)" fill="#888" r="2.5"></circle>
+            <circle transform="translate(181,965)" fill="#888" r="2.5"></circle>
+            <circle
+              transform="translate(181,1215)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,1375)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(181,1565)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1735)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1715)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1695)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1675)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1655)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1635)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1615)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1595)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1575)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1555)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1535)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1515)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1495)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1475)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1455)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1435)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1415)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1395)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1355)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1335)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1315)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1295)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1275)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1255)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1235)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-1115)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-795)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-495)"
+              fill="#888"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-455)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-435)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-415)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-395)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-375)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-355)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-335)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-315)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-295)"
+              fill="var(--primary)"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-275)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-255)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-215)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-195)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-175)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-155)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-135)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-115)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-75)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-55)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-35)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,-15)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle transform="translate(361,5)" fill="white" r="2.5"></circle>
+            <circle transform="translate(361,25)" fill="white" r="2.5"></circle>
+            <circle transform="translate(361,45)" fill="white" r="2.5"></circle>
+            <circle transform="translate(361,65)" fill="white" r="2.5"></circle>
+            <circle transform="translate(361,85)" fill="white" r="2.5"></circle>
+            <circle
+              transform="translate(361,105)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,125)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,145)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,165)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,185)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,205)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,245)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,265)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,285)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,305)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,345)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,365)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,385)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,405)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,425)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,445)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,465)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,485)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,505)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,525)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,545)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,585)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,605)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,625)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,645)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,665)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,685)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,705)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,725)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,745)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,765)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,785)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,825)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,845)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,865)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,885)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,905)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,925)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,945)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,965)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,985)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1005)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1025)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1045)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1065)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1085)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1105)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1145)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1165)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1185)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1205)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1225)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1245)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1265)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1285)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1325)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1345)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1365)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1385)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1405)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1425)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1465)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1485)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1505)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1525)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1545)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1565)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1585)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1605)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1625)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1645)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(361,1665)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1375)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1355)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1335)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1315)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1295)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1275)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1255)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1215)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1195)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1175)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1155)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1135)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1115)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1095)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1075)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1055)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1035)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-1015)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-975)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-955)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-935)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-915)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-895)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-875)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-855)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-835)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-815)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-795)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-775)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-755)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-735)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-715)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-695)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-675)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-655)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-635)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-615)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-575)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-555)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-535)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-515)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-495)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-475)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-455)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-435)"
+              fill="white"
+              r="2.5"
+            ></circle>
+            <circle
+              transform="translate(541,-415)"
+              fill="white"
+              r="2.5"
+            ></circle>
+          </g>
+          <a
+            href="https://learnjavascript.online"
+            target="_blank"
+            id="course-image-container"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 25 25"
+              fill="none"
+              id="course-logo"
+              x="-25"
+              y="-25"
+            >
+              <rect width="25" height="25" rx="12.5" fill="#FBBB19"></rect>
+              <mask
+                id="mask0"
+                mask-type="alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="25"
+                height="25"
+              >
+                <rect width="25" height="25" rx="12.5" fill="#F9BA34"></rect>
+              </mask>
+              <g mask="url(#mask0)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M20.5388 25.9568L23.9377 29.3557L32.9166 21.4417L19.5 8.0251L13.9414 9.41185L13.9414 10.9412L10.5 7.49979L8.49999 17.4998H3.49999L15.3717 29.3715L20.15 26.4162L20.5388 25.9568ZM19.0163 16.0161L19.0902 15.9674L18.6438 15.6436L19.0163 16.0161Z"
+                  fill="#DB9E00"
+                ></path>
+                <path
+                  d="M14.1557 15.3976C14.7059 16.2411 15.4217 16.861 16.6876 16.861C17.7511 16.861 18.4304 16.362 18.4304 15.6724C18.4304 14.8461 17.7324 14.5534 16.5619 14.0726L15.9202 13.8141C14.0682 13.0733 12.8378 12.1451 12.8378 10.1831C12.8378 8.37568 14.3044 6.99979 16.5966 6.99979C18.2284 6.99979 19.4015 7.53305 20.2469 8.9293L18.2483 10.1342C17.8083 9.39335 17.3336 9.10149 16.5966 9.10149C15.8448 9.10149 15.3683 9.54926 15.3683 10.1342C15.3683 10.8572 15.8452 11.1499 16.9464 11.5976L17.5881 11.8557C19.7687 12.7338 21 13.6289 21 15.6415C21 17.8111 19.1848 18.9998 16.747 18.9998C14.3634 18.9998 12.8235 17.9333 12.07 16.5354L14.1557 15.3976ZM5.0892 15.6065C5.49239 16.2781 5.85916 16.846 6.74097 16.846C7.5842 16.846 8.11615 16.5362 8.11615 15.3317V7.13737H10.6827V15.3642C10.6827 17.8596 9.12456 18.9953 6.85022 18.9953C4.79526 18.9953 3.6052 17.9968 2.99999 16.7941L5.0892 15.6065Z"
+                  fill="#121212"
+                ></path>
+              </g>
+            </svg>
+          </a>
+        </svg>
+      </div>
+      <div id="printable-watermark">
+        Get the interactive version on
+        <a href="https://learnjavascript.online/knowledge-map.html"
+          >learnjavascript.online/knowledge-map.html</a
+        >
+      </div>
+    </div>
+    <app-share
+      title="JavaScript Knowledge map"
+      text="Check out this interactive JavaScript Knowledge Map"
+      url="https://learnjavascript.online/knowledge-map.html"
+      class="hide-print"
+      disablenativeshare=""
+      ><p>
+        Share a link to this page. You can also download a screenshot of your
+        progress!
+      </p>
+      <div id="download-screenshot-container">
+        <app-button outlined="" id="download-screenshot"
+          ><div class="screenshot-icon">
+            Download screenshot
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#000000"
+            >
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+            </svg></div
+        ></app-button>
+      </div>
+      <div id="screenshot-preview"></div>
+      <div class="social-grid">
+        <a
+          class="social__link"
+          href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Facebook"
+          ><div class="social social--facebook social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"
+                ></path>
+              </svg>
+            </div>
+            Share on Facebook
+          </div></a
+        ><a
+          class="social__link"
+          href="https://twitter.com/intent/tweet/?text=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Twitter"
+          ><div class="social social--twitter social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"
+                ></path>
+              </svg>
+            </div>
+            Share on Twitter
+          </div></a
+        ><a
+          class="social__link"
+          href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;caption=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;content=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;canonicalUrl=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;shareSource=tumblr_share_button"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Tumblr"
+          ><div class="social social--tumblr social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M13.5.5v5h5v4h-5V15c0 5 3.5 4.4 6 2.8v4.4c-6.7 3.2-12 0-12-4.2V9.5h-3V6.7c1-.3 2.2-.7 3-1.3.5-.5 1-1.2 1.4-2 .3-.7.6-1.7.7-3h3.8z"
+                ></path>
+              </svg>
+            </div>
+            Share on Tumblr
+          </div></a
+        ><a
+          class="social__link"
+          href="mailto:?subject=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;body=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_self"
+          rel="noopener"
+          aria-label="Share by E-Mail"
+          ><div class="social social--email social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M23.5 18c0 .8-.7 1.5-1.5 1.5H2c-.8 0-1.5-.7-1.5-1.5V6c0-.8.7-1.5 1.5-1.5h20c.8 0 1.5.7 1.5 1.5v12zm-3-9.5L12 14 3.5 8.5m0 7.5L7 14m13.5 2L17 14"
+                ></path>
+              </svg>
+            </div>
+            Share by E-Mail
+          </div></a
+        ><a
+          class="social__link"
+          href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;media=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;description=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Pinterest"
+          ><div class="social social--pinterest social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12.14.5C5.86.5 2.7 5 2.7 8.75c0 2.27.86 4.3 2.7 5.05.3.12.57 0 .66-.33l.27-1.06c.1-.32.06-.44-.2-.73-.52-.62-.86-1.44-.86-2.6 0-3.33 2.5-6.32 6.5-6.32 3.55 0 5.5 2.17 5.5 5.07 0 3.8-1.7 7.02-4.2 7.02-1.37 0-2.4-1.14-2.07-2.54.4-1.68 1.16-3.48 1.16-4.7 0-1.07-.58-1.98-1.78-1.98-1.4 0-2.55 1.47-2.55 3.42 0 1.25.43 2.1.43 2.1l-1.7 7.2c-.5 2.13-.08 4.75-.04 5 .02.17.22.2.3.1.14-.18 1.82-2.26 2.4-4.33.16-.58.93-3.63.93-3.63.45.88 1.8 1.65 3.22 1.65 4.25 0 7.13-3.87 7.13-9.05C20.5 4.15 17.18.5 12.14.5z"
+                ></path>
+              </svg>
+            </div>
+            Share on Pinterest
+          </div></a
+        ><a
+          class="social__link"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;title=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;summary=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;source=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on LinkedIn"
+          ><div class="social social--linkedin social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M6.5 21.5h-5v-13h5v13zM4 6.5h-.04c-1.5 0-2.5-1.18-2.5-2.48 0-1.33 1.02-2.4 2.56-2.4s2.5 1.1 2.52 2.43c0 1.3-.98 2.45-2.55 2.45zm11.5 6c-1.1 0-2 .9-2 2v7h-5s.06-12 0-13h5V10s1.55-1.46 3.94-1.46c2.96 0 5.06 2.15 5.06 6.3v6.66h-5v-7c0-1.1-.9-2-2-2z"
+                ></path>
+              </svg>
+            </div>
+            Share on LinkedIn
+          </div></a
+        ><a
+          class="social__link"
+          href="https://reddit.com/submit/?url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;resubmit=true&amp;title=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Reddit"
+          ><div class="social social--reddit social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <ellipse cx="12" cy="15" rx="9.5" ry="6.5"></ellipse>
+                <path
+                  d="M15.54 17.88c-.96.55-2.2.88-3.54.88-1.35 0-2.6-.33-3.55-.9"
+                ></path>
+                <circle cx="16" cy="13.5" r="1.5"></circle>
+                <circle cx="8" cy="13.5" r="1.5"></circle>
+                <path
+                  d="M18.74 10.42C19.14 9.58 20 9 21 9c1.38 0 2.5 1.12 2.5 2.5 0 1.25-.92 2.3-2.12 2.47"
+                ></path>
+                <circle cx="20" cy="4.5" r="2.5"></circle>
+                <path
+                  d="M5.26 10.42C4.86 9.58 4 9 3 9 1.62 9 .5 10.12.5 11.5c0 1.25.92 2.3 2.12 2.47M12 8.5s-.13-7.4 5.5-4"
+                ></path>
+              </svg>
+            </div>
+            Share on Reddit
+          </div></a
+        ><a
+          class="social__link"
+          href="https://www.xing.com/app/user?op=share;url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html;title=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on XING"
+          ><div class="social social--xing social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M6.8 4.5h-5l3 5.5-4 6.5h5l4-6.5zm16.7-4H18l-8 14 5.3 9h5.4l-5.2-9z"
+                ></path>
+              </svg>
+            </div>
+            Share on XING
+          </div></a
+        ><a
+          class="social__link"
+          href="whatsapp://send?text=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map%20https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on WhatsApp"
+          ><div class="social social--whatsapp social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  stroke-width="1px"
+                  d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"
+                ></path>
+              </svg>
+            </div>
+            Share on WhatsApp
+          </div></a
+        ><a
+          class="social__link"
+          href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html&amp;t=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Hacker News"
+          ><div class="social social--hackernews social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140">
+                <path
+                  stroke-width="5px"
+                  fill-rule="evenodd"
+                  d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"
+                ></path>
+              </svg>
+            </div>
+            Share on Hacker News
+          </div></a
+        ><a
+          class="social__link"
+          href="http://vk.com/share.php?title=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on VK"
+          ><div class="social social--vk social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  stroke-width="1.5px"
+                  d="M21.547 7h-3.29a.743.743 0 0 0-.655.392s-1.312 2.416-1.734 3.23C14.734 12.813 14 12.126 14 11.11V7.603A1.104 1.104 0 0 0 12.896 6.5h-2.474a1.982 1.982 0 0 0-1.75.813s1.255-.204 1.255 1.49c0 .42.022 1.626.04 2.64a.73.73 0 0 1-1.272.503 21.54 21.54 0 0 1-2.498-4.543.693.693 0 0 0-.63-.403h-2.99a.508.508 0 0 0-.48.685C3.005 10.175 6.918 18 11.38 18h1.878a.742.742 0 0 0 .742-.742v-1.135a.73.73 0 0 1 1.23-.53l2.247 2.112a1.09 1.09 0 0 0 .746.295h2.953c1.424 0 1.424-.988.647-1.753-.546-.538-2.518-2.617-2.518-2.617a1.02 1.02 0 0 1-.078-1.323c.637-.84 1.68-2.212 2.122-2.8.603-.804 1.697-2.507.197-2.507z"
+                ></path>
+              </svg>
+            </div>
+            Share on VK
+          </div></a
+        ><a
+          class="social__link"
+          href="https://telegram.me/share/url?text=Check%20out%20this%20interactive%20JavaScript%20Knowledge%20Map&amp;url=https%3A%2F%2Flearnjavascript.online%2Fknowledge-map.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Share on Telegram"
+          ><div class="social social--telegram social--large">
+            <div aria-hidden="true" class="social__icon social__icon--normal">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  stroke-width="1.5px"
+                  d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"
+                ></path>
+              </svg>
+            </div>
+            Share on Telegram
+          </div></a
+        >
+      </div></app-share
+    ><app-toast course="javascript"></app-toast>
+    <script>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      (window.dataLayer = window.dataLayer || []),
+        gtag("js", new Date()),
+        gtag("config", "G-K822X1GYKW", { anonymize_ip: !0 });
+    </script>
+    <style>
+      #screenshot-container {
+        position: relative;
+      }
+      #printable-watermark {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 10px;
+        font-weight: 700;
+      }
+      #printable-watermark.screenshot-mode {
+        display: block;
+        top: 10px;
+        position: absolute;
+      }
+      @media print {
+        body {
+          color: #000;
+          background-color: #fff;
+        }
+        header {
+          background-color: #fff;
+          color: #000;
+        }
+        .hide-print {
+          display: none;
+        }
+        .parent-category,
+        .step-link,
+        .step-text {
+          color: #000;
+          fill: #000;
+        }
+        h1 {
+          margin-bottom: 0;
+        }
+        #printable-watermark {
+          display: block;
+          background-color: #fff;
+        }
+      }
+    </style>
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-K822X1GYKW"
+      defer=""
+      async=""
+    ></script>
+    <div class="tooltip" style="opacity: 0; left: 588px; top: 383px">
+      Covered in chapter 12
+    </div>
+    <div class="tooltip" style="opacity: 0; left: 855px; top: 1162px">
+      Covered in chapter 52
+    </div>
+    <div class="tooltip" style="opacity: 0; left: 602px; top: 401px">
+      Covered in chapter 7
+    </div>
+    <div class="tooltip" style="opacity: 0; left: 625px; top: 294px">
+      Covered in chapter 14
+    </div>
+  </body>
+</html>
